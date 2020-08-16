@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OXIDEfactory"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" KeyDown="Window_KeyDown">
     <Grid>
-        <MediaElement Height="319" Margin="200,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="590"/>
-        <Button x:Name="ImportButton" Content="Import" HorizontalAlignment="Left" Margin="23,395,0,0" VerticalAlignment="Top" Click="ImportButton_Click"/>
+        <MediaElement x:Name="MediaElementPlayView" Height="319" Margin="200,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="590"/>
+        <Button x:Name="ImportButton" Content="Import" Margin="18,329,0,0" Click="ImportButton_Click" Height="54" VerticalAlignment="Top" HorizontalAlignment="Left" Width="54"/>
 
     </Grid>
 </Window>
