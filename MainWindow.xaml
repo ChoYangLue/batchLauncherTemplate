@@ -1,0 +1,14 @@
+﻿<Window x:Class="OXIDEfactory.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OXIDEfactory"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <MediaElement Height="319" Margin="200,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="590"/>
+        <Button x:Name="ImportButton" Content="Import" HorizontalAlignment="Left" Margin="23,395,0,0" VerticalAlignment="Top" Click="ImportButton_Click"/>
+
+    </Grid>
+</Window>
