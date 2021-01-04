@@ -7,7 +7,7 @@ using System.Threading;
 using System.Diagnostics;
 using System.IO;
 
-namespace AnimeLoupe2x
+namespace OXIDEfactory
 {
 	public delegate void OutputDelegate(string output_text);
 
