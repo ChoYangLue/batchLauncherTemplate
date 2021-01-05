@@ -25,6 +25,7 @@ namespace OXIDEfactory
     public partial class MainWindow : Window
     {
         private UserInput user_inp;
+        private bool isPlaying = false;
 
         public MainWindow()
         {
@@ -40,10 +41,17 @@ namespace OXIDEfactory
             }
 
             MediaElementPlayView.Source = new Uri(video_path, UriKind.Relative);
-            MediaElementPlayView.LoadedBehavior = MediaState.Stop;
+            MediaElementPlayView.LoadedBehavior = MediaState.Manual;
+            MediaElementPlayView.Stop();
 
             Console.WriteLine("loaded: " + video_path);
             return 0;
+        }
+
+        public void pushSwitch(ref bool switch_button_flag)
+        {
+            if (switch_button_flag) { switch_button_flag = false; }
+            else { switch_button_flag = true; }
         }
 
         private void ImportButton_Click(object sender, RoutedEventArgs e)
@@ -80,6 +88,20 @@ namespace OXIDEfactory
             if (e.Key == System.Windows.Input.Key.Enter)
             {
                 Console.WriteLine("enter key");
+            }
+
+            if (e.Key == System.Windows.Input.Key.A)
+            {
+                pushSwitch(ref isPlaying);
+                Console.WriteLine(isPlaying);
+                if (isPlaying)
+                {
+                    MediaElementPlayView.Play();
+                }
+                else
+                {
+                    MediaElementPlayView.Pause();
+                }
             }
 
             Console.WriteLine(e.Key);
@@ -128,6 +150,7 @@ namespace OXIDEfactory
                 // 1番ボタンが押されたらフォームが閉じるように処理
                 //Close();
                 Console.WriteLine("Buttons[0]");
+               
             }
         }
 
