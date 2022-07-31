@@ -7,7 +7,7 @@ using System.Threading;
 using System.Diagnostics;
 using System.IO;
 
-namespace OXIDEfactory
+namespace batchLauncherTemplate
 {
 	public delegate void OutputDelegate(string output_text);
 

@@ -21,11 +21,15 @@ namespace batchLauncherTemplate
     /// </summary>
     public partial class MainWindow : Window
     {
+        public delegate void UpdateTextBoxEventHandler(TextBox text_box, string data);
+        public event UpdateTextBoxEventHandler UpdateTextBoxContentEvent = null;
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        /* ボタンクリック */
         private void FolderOpenButton_Click(object sender, RoutedEventArgs e)
         {
             using (var cofd = new CommonOpenFileDialog()
@@ -43,6 +47,44 @@ namespace batchLauncherTemplate
                 // FileNameで選択されたフォルダを取得する
                 FolderTextbox.Text = cofd.FileName;
             }
+        }
+
+        private void RunButton_Click(object sender, RoutedEventArgs e)
+        {
+            var com1 = new LoadExecJob();
+            com1.SetOutputFunc(BatchOutputFunc);
+            com1.Run("", "");
+            com1.Join();
+        }
+
+        /* コンソール出力 */
+        void BatchOutputFunc(string out_txt)
+        {
+            /*
+            if (out_txt.IndexOf("time=") > 0)
+            {
+                string time_tmp = out_txt.Substring(out_txt.IndexOf("time=") + 5, 8);
+            }*/
+
+            this.Dispatcher.Invoke(UpdateTextBoxContentEvent, OutputLogTextbox, out_txt);
+        }
+
+        /* デリゲート */
+        void event_DataReceived2(TextBox text_box, string data)
+        {
+            text_box.AppendText(data + "\n");
+            text_box.ScrollToEnd();
+        }
+
+        /* ロードとセーブ関連 */
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateTextBoxContentEvent = new UpdateTextBoxEventHandler(event_DataReceived2);
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
         }
     }
 }
