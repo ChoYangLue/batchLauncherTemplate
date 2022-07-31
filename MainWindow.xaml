@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:batchLauncherTemplate"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded" Closing="Window_Closing">
     <Grid>
         <Button x:Name="FolderOpenButton" Content="Open" HorizontalAlignment="Left" Margin="645,23,0,0" VerticalAlignment="Top" Click="FolderOpenButton_Click"/>
         <TextBox x:Name="FolderTextbox" HorizontalAlignment="Left" Margin="40,27,0,0" Text="Path" TextWrapping="Wrap" VerticalAlignment="Top" Width="585"/>

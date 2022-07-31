@@ -53,7 +53,7 @@ namespace batchLauncherTemplate
         {
             var com1 = new LoadExecJob();
             com1.SetOutputFunc(BatchOutputFunc);
-            com1.Run("", "");
+            com1.Run(FolderTextbox.Text+"/hello.bat", "");
             com1.Join();
         }
 
@@ -79,12 +79,14 @@ namespace batchLauncherTemplate
         /* ロードとセーブ関連 */
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            FolderTextbox.Text = Properties.Settings.Default.FolderTextboxSetting;
+
             UpdateTextBoxContentEvent = new UpdateTextBoxEventHandler(event_DataReceived2);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-
+            Properties.Settings.Default.FolderTextboxSetting = FolderTextbox.Text;
         }
     }
 }
